@@ -1,0 +1,37 @@
+﻿@model DoctorCreateViewModel
+@{
+	ViewData["Title"] = "SignUp";
+}
+
+<h1>Add Doctot</h1>
+<div class="main-w3layouts wrapper">
+	<div class="main-agileinfo">
+		<div class="agileits-top">
+				@Html.ValidationSummary(true,"",new {@class="text-danger"})
+			<form asp-action="Create" asp-controller="Admin" enctype="multipart/form-data">
+				<input class="text email" type="email" asp-for=@Model.Email placeholder="Email" required="">
+				<span asp-validation-for="@Model.Email"></span>
+
+				<input class="text" type="password" asp-for=@Model.Password placeholder="Password" required="">
+				<span asp-validation-for="@Model.Password"></span>
+
+
+				<input class="text w3lpass" type="password" asp-for=@Model.ConfirmedPassword placeholder="Confirm Password" required="">
+				<span asp-validation-for="@Model.ConfirmedPassword"></span>
+
+				<input class="text" type="text" asp-for=@Model.Specialty placeholder="spec" required="">
+				<span asp-validation-for="@Model.Specialty"></span>
+				<div class="form-group">
+					<label asp-for="@Model.File" class="col-form-label"> </label>
+					<input type="file" asp-for="@Model.File" class="form-control" />
+				</div>
+				<input type="submit" value="Add">
+			</form>
+			
+		</div>
+		@section Scripts{
+			<partial name="_ValidationScriptsPartial" />
+		}
+	</div>
+</div>
+

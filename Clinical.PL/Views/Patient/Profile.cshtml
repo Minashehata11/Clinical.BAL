@@ -1,0 +1,78 @@
+﻿@model List<PatientProfileViewModel>
+@{
+    var patientName = ViewBag.patientName;
+    var patientEmail = ViewBag.patientEmail;
+}
+<h1>My proile</h1>
+<br />
+
+<form asp-action="Edit" asp-controller="Patient" >
+    <div class="col-6">
+
+        <div class="form-group">
+            <label asp-for="@patientName" class="col-form-label"> </label>
+            <input asp-for="@patientName" class="form-control" readonly />
+
+
+        </div>
+        <div class="form-group">
+            <label asp-for="@patientEmail" class="col-form-label"> </label>
+            <input asp-for="@patientEmail" class="form-control" readonly />
+
+
+        </div>
+
+
+
+    </div>
+    </form>
+    <br />
+
+   
+
+    @if (Model.Count() > 0)
+{
+    <table class="table">
+        <thead>
+
+            <tr>
+
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Specialty</th>
+                <th scope="col">ReservitionTime</th>
+
+
+            </tr>
+        </thead>
+
+        @foreach (var doctor in Model)
+        {
+            <tbody class="table-group-divider">
+                <tr>
+
+                    <td>@doctor.DoctorName</td>
+          
+                    <td>@doctor.DoctorEmail</td>
+                    <td>@doctor.DoctorSpecialty</td>
+                    <td>@doctor.ReservationTime</td>
+
+
+                 
+
+
+                </tr>
+
+            </tbody>
+        }
+
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        <h3> NO Reservition  </h3>
+        <a asp-action="Reservation" asp-controller="Patient">Reservition Now?! </a>
+    </div>
+}
+

@@ -1,0 +1,35 @@
+﻿@model DoctorDetailsViewModel
+<div class="row">
+    <div class="col-6">
+
+        <div class="form-group">
+            <label asp-for="@Model.Name" class="col-form-label"> </label>
+            <input asp-for="@Model.Name" class="form-control" readonly />
+
+
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Email" class="col-form-label"> </label>
+            <input asp-for="@Model.Email" class="form-control" readonly />
+
+
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Specialty" typeof="checkbox" class="col-form-label">  </label>
+            <input  asp-for="@Model.Specialty" class="form-control" readonly />
+
+
+        </div>
+        <td>
+            <img src="~/Files/Images/@Model.Image" class="img-circle" hight="40" width="40" alt="Doctor">
+        </td>
+        
+    </div>
+
+    <br />
+
+    
+    <a asp-action="Index"> Back</a>
+
+</div>

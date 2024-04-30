@@ -1,0 +1,48 @@
+﻿@model ReservationViewModel
+@{
+    ViewData["Title"] = "SignUp";
+    var doctors = new SelectList(ViewBag.doctores, "DoctorId", "User.FirstName");
+    var patientId = ViewBag.patientId;
+
+}
+<h1>Add Doctot</h1>
+<div class="main-w3layouts wrapper">
+	<div class="main-agileinfo">
+		<div class="agileits-top">
+			@Html.ValidationSummary(true,"",new {@class="text-danger"})
+			<form asp-action="Reservation" asp-controller="Patient">
+
+                <input  type="hidden" asp-for="@patientId"/>
+                <div class="form-group">
+                    <label asp-for="@Model.DateReserve" class="col-form-label"> </label>
+                    <input asp-for="@Model.DateReserve" class="form-control" />
+                    <span asp-validation-for="@Model.DateReserve" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.ReasonForVisit" class="col-form-label"> </label>
+                    <input asp-for="@Model.ReasonForVisit" class="form-control"/>
+                    <span asp-validation-for="@Model.ReasonForVisit" class="text-danger"></span>
+
+                </div>
+
+                
+              
+                <div class="form-group">
+                    <label asp-for="@Model.DoctorId" class="col-form-label"> </label>
+                    <select asp-for="@Model.DoctorId" asp-items="doctors" class="form-control">
+                        <option>--select Department--</option>
+
+                    </select>
+                    <span asp-validation-for="@Model.DoctorId" class="text-danger"></span>
+                </div>
+                   <input  type="submit" value="Resreve"/>
+			</form>
+
+		</div>
+		@section Scripts{
+			<partial name="_ValidationScriptsPartial" />
+		}
+	</div>
+</div>
+
